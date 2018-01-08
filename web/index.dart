@@ -18,16 +18,9 @@ class ContactComp extends Component {
   String render() {
     return '''
 <div class="item">
+  <div>${contact.firstName} ${contact.lastName}</div>
   <div>
-    <span>First name</span>
-    <span>${contact.firstName}</span>
-  </div>
-  <div>
-    <span>Last name</span>
-    <span>${contact.lastName}</span>
-  </div>
-  <div>
-    <span>Phone number</span>
+    <span>&#9742;</span>
     <span>${contact.phoneNumber}</span>
   </div>
 </div>
@@ -51,19 +44,14 @@ class ContactListComp extends Component {
 
 final api = new Api(new http.BrowserClient());
 
-Future updatePics() async {
+Future updateContacts() async {
   contactsHolder.setInnerHtml(new ContactListComp(await api.get()).render());
 }
 
 main() async {
-  final ButtonElement refreshBtn = querySelector("#refresh-btn");
   contactsHolder = querySelector("#contacts-holder");
 
-  refreshBtn.onClick.listen((_) async {
-    await updatePics();
-  });
-
   new Future.delayed(new Duration(seconds: 1)).then((_) {
-    updatePics();
+    updateContacts();
   });
 }

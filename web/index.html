@@ -5,19 +5,90 @@
     <title>Jaguar Form handling</title>
 
     <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            padding: 0px;
+            margin: 0px;
+            overflow: hidden;
+        }
 
+        #whole {
+            width: 100%;
+            height: 100%;
+            background-color: #e6e6e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #window {
+            height: 400px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            background-color: #0000009e;
+            color: white;
+            padding: 20px 10px;
+            border-radius: 10px;
+        }
+
+        .pane {
+            height: 100%;
+            margin: 10px;
+        }
+
+        #contacts-holder {
+            width: 400px;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            border: 1px solid gray;
+        }
+
+        .item {
+            border-bottom: 1px solid gray;
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
-<form action="/api/add" method="post">
-    <input type="text" name="firstName">
-    <input type="text" name="lastName">
-    <input type="tel" name="firstName">
-    <input type="submit">
-</form>
-<button id="refresh-btn">Refresh</button>
-<div id="contacts-holder"></div>
+
+<div id="whole">
+    <div id="window">
+        <div class="pane">
+            <form action="/api/add" method="post">
+                <div class="form-group">
+                    <div>First name</div>
+                    <input type="text" name="firstName" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <div>Last name</div>
+                    <input type="text" name="lastName" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <div>Phone number</div>
+                    <input type="tel" name="phoneNumber" class="form-control">
+                </div>
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <input type="submit" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+
+        <div class="pane">
+            <div id="contacts-holder"></div>
+        </div>
+    </div>
+</div>
+
 <script type="application/dart" src="index.dart"></script>
 <script defer src="packages/browser/dart.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
 </body>
 </html>
