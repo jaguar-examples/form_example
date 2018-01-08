@@ -2,7 +2,7 @@
 
 Example showcasing usage of x-www-form-urlencoded in Jaguar.
 
-![Screenshot]()
+![Screenshot](https://raw.githubusercontent.com/jaguar-examples/form_example/master/doc_files/screenshot.png)
 
 # Try it
 
