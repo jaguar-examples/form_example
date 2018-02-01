@@ -13,6 +13,8 @@ main(List<String> arguments) async {
     ..post('/add', (ctx) async {
       final Map<String, String> map = await ctx.req.bodyAsUrlEncodedForm();
       contacts.add(Contact.create(map));
+      print(map);
+      print(contacts);
       return new Uri(path: '/');
     }, statusCode: 302)
     // Route to retrieve data

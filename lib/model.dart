@@ -28,11 +28,11 @@ class Contact {
       phoneNumber: map['phoneNumber']);
 
   Map<String, dynamic> get toMap => {
-    'id': id,
-    'firstName': firstName,
-    'lastName': lastName,
-    'phoneNumber': phoneNumber,
-  };
+        'id': id,
+        'firstName': firstName,
+        'lastName': lastName,
+        'phoneNumber': phoneNumber,
+      };
 
   String toString() => toMap.toString();
 }
@@ -45,17 +45,12 @@ class Api {
   Api(http.Client client, {this.host: ''}) : client = new JsonClient(client);
 
   /// Add a new contact
-  Future<List<Contact>> add(
-      String firstName, String lastName, String phoneNumber) async {
+  Future add(String firstName, String lastName, String phoneNumber) async {
     final JsonResponse resp = await client.postForm('$host/api/add', body: {
       'firstName': firstName,
       'lastName': lastName,
       'phoneNumber': phoneNumber,
     });
-    print(resp.body);
-    return (resp.body as List<Map<String, dynamic>>)
-        .map(Contact.fromMap)
-        .toList();
   }
 
   /// Get all contacts
